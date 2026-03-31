@@ -1,0 +1,5 @@
+{
+  "installCommand": "npm --prefix @hexlet/code install",
+  "buildCommand": "npm --prefix @hexlet/code run build",
+  "outputDirectory": "@hexlet/code/dist"
+}
