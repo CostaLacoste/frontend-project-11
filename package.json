@@ -1,4 +1,6 @@
 {
+  "name": "@hexlet/code",
+  "private": true,
   "dependencies": {
     "bootstrap": "^5.3.8"
   }
