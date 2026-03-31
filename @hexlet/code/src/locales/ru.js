@@ -3,6 +3,8 @@ export default {
     ui: {
       feeds: 'Потоки',
       posts: 'Посты',
+      preview: 'Просмотр',
+      close: 'Закрыть',
     },
     errors: {
       required: 'Не должно быть пустым',
