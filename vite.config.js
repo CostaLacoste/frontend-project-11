@@ -3,12 +3,17 @@ import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const codeRoot = path.resolve(__dirname, 'code');
 
-// Приложение в каталоге code/. Сборка: vite build (без аргумента code/index.html — в Vite 8 это даёт ошибку резолва).
+// Приложение в code/. Сборка: npm run build → dist/index.html в корне репозитория.
+// Явный input — чтобы резолв совпадал с ожиданиями rolldown/Hexlet (модуль code/index.html).
 export default defineConfig({
-  root: path.resolve(__dirname, 'code'),
+  root: codeRoot,
   build: {
     outDir: path.resolve(__dirname, 'dist'),
     emptyOutDir: true,
+    rollupOptions: {
+      input: path.resolve(codeRoot, 'index.html'),
+    },
   },
 });
