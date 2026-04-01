@@ -51,7 +51,8 @@ export default class View {
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label=""></button>
           </div>
           <div class="modal-body"></div>
-          <div class="modal-footer">
+          <div class="modal-footer justify-content-between">
+            <a class="btn btn-primary" data-role="read-full" href="#" target="_blank" rel="noopener noreferrer"></a>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"></button>
           </div>
         </div>
@@ -60,9 +61,12 @@ export default class View {
     document.body.append(this.modalElement);
     this.modalTitle = this.modalElement.querySelector('.modal-title');
     this.modalBody = this.modalElement.querySelector('.modal-body');
+    this.modalReadFullLink = this.modalElement.querySelector('[data-role="read-full"]');
+    this.modalFooterCloseBtn = this.modalElement.querySelector('.modal-footer .btn-secondary');
     const closeBtn = this.modalElement.querySelector('.modal-header .btn-close');
     closeBtn.setAttribute('aria-label', this.i18n.t('ui.close'));
-    this.modalElement.querySelector('.modal-footer button').textContent = this.i18n.t('ui.close');
+    this.modalReadFullLink.textContent = this.i18n.t('ui.readFull');
+    this.modalFooterCloseBtn.textContent = this.i18n.t('ui.close');
   }
 
   applyFormTexts() {
@@ -142,9 +146,10 @@ export default class View {
     this.form.reset();
   }
 
-  fillModal(title, description) {
-    this.modalTitle.textContent = title;
-    this.modalBody.textContent = description;
+  fillModal(post) {
+    this.modalTitle.textContent = post.title;
+    this.modalBody.textContent = post.description;
+    this.modalReadFullLink.href = post.link;
   }
 
   getModalRoot() {

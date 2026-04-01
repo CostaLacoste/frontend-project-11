@@ -86,7 +86,7 @@ export default class Controller {
     this.model.markPostViewed(link);
     const snapshot = this.model.getPostsSnapshot();
     this.view.renderPosts(snapshot.postsByLink, snapshot.viewedPostLinks);
-    this.view.fillModal(post.title, post.description);
+    this.view.fillModal(post);
     this.modal.show();
   }
 }

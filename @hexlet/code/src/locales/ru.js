@@ -10,6 +10,7 @@ export default {
       posts: 'Посты',
       preview: 'Просмотр',
       close: 'Закрыть',
+      readFull: 'Читать полностью',
     },
     errors: {
       required: 'Не должно быть пустым',
