@@ -47,14 +47,24 @@ const parseRss = (rssData) => {
 };
 
 export const loadRss = async (url) => {
-  const response = await fetch(getProxyUrl(url));
+  try {
+    const response = await fetch(getProxyUrl(url));
+    if (!response.ok) {
+      throw new Error('network');
+    }
 
-  if (!response.ok) {
+    const responseData = await response.json();
+    if (!responseData || typeof responseData.contents !== 'string') {
+      throw new Error('invalidRss');
+    }
+
+    return parseRss(responseData.contents);
+  } catch (error) {
+    if (error instanceof Error && (error.message === 'invalidRss' || error.message === 'network')) {
+      throw error;
+    }
     throw new Error('network');
   }
-
-  const responseData = await response.json();
-  return parseRss(responseData.contents);
 };
 
 export { normalizeUrl };

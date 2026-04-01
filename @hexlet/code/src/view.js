@@ -14,6 +14,7 @@ export default class View {
 
   mountLayout() {
     this.form = this.root.querySelector('form');
+    this.form.setAttribute('novalidate', 'novalidate');
     this.urlInput = this.root.querySelector('#rssUrl');
     // Keep e2e selector stable even if html template changes.
     this.urlInput.setAttribute('aria-label', 'url');
@@ -43,6 +44,7 @@ export default class View {
     this.root.querySelector('#app').append(feedsContainer, postsContainer);
 
     this.modalElement = document.createElement('div');
+    this.modalElement.id = 'modal';
     this.modalElement.className = 'modal fade';
     this.modalElement.tabIndex = -1;
     this.modalElement.innerHTML = `
