@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <div id="app" class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          <h1 class="mb-4" data-role="page-heading"></h1>
+          <form class="row g-3">
+            <div class="col-12 col-md-9">
+              <label for="rssUrl" class="form-label"></label>
+              <input
+                type="url"
+                id="rssUrl"
+                name="rssUrl"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="col-12 col-md-3 d-flex align-items-end">
+              <button type="submit" class="btn btn-primary w-100"></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./code/src/main.js"></script>
+  </body>
+</html>
