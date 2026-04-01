@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "npm run dev --prefix code",
-    "build": "npm run build --prefix code",
-    "preview": "npm run preview --prefix code"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
