@@ -15,6 +15,8 @@ export default class View {
   mountLayout() {
     this.form = this.root.querySelector('form');
     this.urlInput = this.root.querySelector('#rssUrl');
+    // Keep e2e selector stable even if html template changes.
+    this.urlInput.setAttribute('aria-label', 'url');
 
     this.feedback = document.createElement('div');
     this.feedback.className = 'invalid-feedback';
