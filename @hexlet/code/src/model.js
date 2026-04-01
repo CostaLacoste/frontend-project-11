@@ -12,7 +12,7 @@ export default class Model {
     return yup.string().trim().required().url().test(
       'unique',
       () => i18n.t('errors.duplicate'),
-      value => {
+      (value) => {
         if (!value) {
           return true
         }
@@ -25,20 +25,20 @@ export default class Model {
     this.feedUrls.add(normalizedUrl)
     this.trackedFeeds.push({
       url: normalizedUrl,
-      postLinks: new Set(posts.map(post => post.link)),
+      postLinks: new Set(posts.map((post) => post.link)),
     })
-    posts.forEach(post => {
+    posts.forEach((post) => {
       this.postsByLink.set(post.link, post)
     })
   }
 
   mergePostsFromPoll(url, postsFromFeed) {
-    const tracked = this.trackedFeeds.find(item => item.url === url)
+    const tracked = this.trackedFeeds.find((item) => item.url === url)
     if (!tracked) {
       return false
     }
     let changed = false
-    postsFromFeed.forEach(post => {
+    postsFromFeed.forEach((post) => {
       if (!tracked.postLinks.has(post.link)) {
         tracked.postLinks.add(post.link)
         this.postsByLink.set(post.link, post)
@@ -49,7 +49,7 @@ export default class Model {
   }
 
   getTrackedFeedUrls() {
-    return this.trackedFeeds.map(item => item.url)
+    return this.trackedFeeds.map((item) => item.url)
   }
 
   markPostViewed(link) {

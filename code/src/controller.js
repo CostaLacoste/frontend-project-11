@@ -1,5 +1,6 @@
 import { Modal } from 'bootstrap'
 import { loadRss, normalizeUrl } from './rss.js'
+
 export default class Controller {
   constructor(model, view, i18n) {
     this.model = model
@@ -11,10 +12,10 @@ export default class Controller {
 
   start() {
     this.modal = new Modal(this.view.getModalRoot())
-    this.view.form.addEventListener('submit', event => {
+    this.view.form.addEventListener('submit', (event) => {
       this.handleSubmit(event)
     })
-    this.view.getPostsListElement().addEventListener('click', event => {
+    this.view.getPostsListElement().addEventListener('click', (event) => {
       this.handlePostListClick(event)
     })
     this.schedulePolling()
@@ -30,7 +31,7 @@ export default class Controller {
 
   async pollAllFeeds() {
     const urls = this.model.getTrackedFeedUrls()
-    const tasks = urls.map(async url => {
+    const tasks = urls.map(async (url) => {
       try {
         const { posts } = await loadRss(url)
         const changed = this.model.mergePostsFromPoll(url, posts)
@@ -39,7 +40,7 @@ export default class Controller {
           this.view.renderPosts(snapshot.postsByLink, snapshot.viewedPostLinks)
         }
       }
-catch {
+      catch {
         // ignore polling errors
       }
     })
@@ -61,7 +62,7 @@ catch {
       this.view.resetForm()
       this.view.focusUrlInput()
     }
-catch (error) {
+    catch (error) {
       if (error.name === 'ValidationError') {
         this.view.setInputInvalid(error.message)
         return

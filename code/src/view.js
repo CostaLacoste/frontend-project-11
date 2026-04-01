@@ -101,7 +101,7 @@ export default class View {
   renderPosts(postsByLink, viewedPostLinks) {
     this.postsList.innerHTML = ''
     const orderedPosts = Array.from(postsByLink.values()).reverse()
-    orderedPosts.forEach(post => {
+    orderedPosts.forEach((post) => {
       const postItem = document.createElement('li')
       postItem.className = 'list-group-item d-flex justify-content-between align-items-start gap-3'
       const postLink = document.createElement('a')
