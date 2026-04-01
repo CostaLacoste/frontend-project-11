@@ -25,12 +25,12 @@ const parseRss = (rssData) => {
   }
 
   const posts = Array.from(postElements)
-    .map((postElement) => ({
+    .map(postElement => ({
       title: postElement.querySelector('title')?.textContent?.trim(),
       link: postElement.querySelector('link')?.textContent?.trim(),
       description: postElement.querySelector('description')?.textContent?.trim() ?? '',
     }))
-    .filter((post) => post.title && post.link)
+    .filter(post => post.title && post.link)
   if (posts.length === 0) {
     throw new Error('invalidRss')
   }
@@ -62,7 +62,8 @@ export const loadRss = async (url) => {
     }
 
     return parseRss(rssContent)
-  } catch (error) {
+  }
+  catch (error) {
     if (error instanceof Error && (error.message === 'invalidRss' || error.message === 'network')) {
       throw error
     }

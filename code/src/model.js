@@ -25,7 +25,7 @@ export default class Model {
     this.feedUrls.add(normalizedUrl)
     this.trackedFeeds.push({
       url: normalizedUrl,
-      postLinks: new Set(posts.map((post) => post.link)),
+      postLinks: new Set(posts.map(post => post.link)),
     })
     posts.forEach((post) => {
       this.postsByLink.set(post.link, post)
@@ -33,7 +33,7 @@ export default class Model {
   }
 
   mergePostsFromPoll(url, postsFromFeed) {
-    const tracked = this.trackedFeeds.find((item) => item.url === url)
+    const tracked = this.trackedFeeds.find(item => item.url === url)
     if (!tracked) {
       return false
     }
@@ -49,7 +49,7 @@ export default class Model {
   }
 
   getTrackedFeedUrls() {
-    return this.trackedFeeds.map((item) => item.url)
+    return this.trackedFeeds.map(item => item.url)
   }
 
   markPostViewed(link) {
