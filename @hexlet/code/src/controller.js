@@ -52,7 +52,7 @@ export default class Controller {
     try {
       await this.schema.validate(rawUrl);
       const normalizedUrl = normalizeUrl(rawUrl);
-      const { feed, posts } = await loadRss(normalizedUrl);
+      const { feed, posts } = await loadRss(rawUrl);
       this.model.addFeed(normalizedUrl, posts);
       this.view.setSuccessFeedback(this.i18n.t('ui.success'));
       this.view.renderFeed(feed);
