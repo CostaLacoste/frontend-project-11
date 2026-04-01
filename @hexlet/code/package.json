@@ -12,6 +12,7 @@
     "vite": "^8.0.1"
   },
   "dependencies": {
+    "bootstrap": "^5.3.8",
     "i18next": "^26.0.3",
     "yup": "^1.7.1"
   }
