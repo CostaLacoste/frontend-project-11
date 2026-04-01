@@ -54,7 +54,7 @@ export default class Controller {
       const normalizedUrl = normalizeUrl(rawUrl);
       const { feed, posts } = await loadRss(normalizedUrl);
       this.model.addFeed(normalizedUrl, posts);
-      this.view.clearInputInvalid();
+      this.view.setSuccessFeedback(this.i18n.t('ui.success'));
       this.view.renderFeed(feed);
       const snapshot = this.model.getPostsSnapshot();
       this.view.renderPosts(snapshot.postsByLink, snapshot.viewedPostLinks);

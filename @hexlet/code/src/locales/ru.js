@@ -11,6 +11,7 @@ export default {
       preview: 'Просмотр',
       close: 'Закрыть',
       readFull: 'Читать полностью',
+      success: 'RSS успешно загружен',
     },
     errors: {
       required: 'Не должно быть пустым',

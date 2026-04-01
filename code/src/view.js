@@ -19,11 +19,11 @@ export default class View {
     this.urlInput.setAttribute('aria-label', 'url');
 
     this.feedback = document.createElement('div');
-    this.feedback.className = 'invalid-feedback';
+    this.feedback.className = 'feedback mt-2 small';
     this.urlInput.insertAdjacentElement('afterend', this.feedback);
 
     const feedsContainer = document.createElement('div');
-    feedsContainer.className = 'card border-0';
+    feedsContainer.className = 'feeds card border-0';
     const feedsTitle = document.createElement('h2');
     feedsTitle.className = 'card-header';
     feedsTitle.textContent = this.i18n.t('ui.feeds');
@@ -32,7 +32,7 @@ export default class View {
     feedsContainer.append(feedsTitle, this.feedsList);
 
     const postsContainer = document.createElement('div');
-    postsContainer.className = 'card border-0 mt-4';
+    postsContainer.className = 'posts card border-0 mt-4';
     const postsTitle = document.createElement('h2');
     postsTitle.className = 'card-header';
     postsTitle.textContent = this.i18n.t('ui.posts');
@@ -132,12 +132,21 @@ export default class View {
 
   setInputInvalid(message) {
     this.urlInput.classList.add('is-invalid');
+    this.feedback.classList.remove('text-success');
+    this.feedback.classList.add('text-danger');
     this.feedback.textContent = message;
   }
 
   clearInputInvalid() {
     this.urlInput.classList.remove('is-invalid');
-    this.feedback.textContent = '';
+    this.feedback.classList.remove('text-danger');
+  }
+
+  setSuccessFeedback(message) {
+    this.urlInput.classList.remove('is-invalid');
+    this.feedback.classList.remove('text-danger');
+    this.feedback.classList.add('text-success');
+    this.feedback.textContent = message;
   }
 
   focusUrlInput() {
