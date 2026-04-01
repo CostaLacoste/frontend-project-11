@@ -119,7 +119,7 @@ export default class View {
       postLink.target = '_blank';
       postLink.rel = 'noopener noreferrer';
       postLink.textContent = post.title;
-      postLink.className = viewedPostLinks.has(post.link) ? 'fw-normal' : 'fw-bold';
+      postLink.className = viewedPostLinks.has(post.link) ? 'fw-normal link-secondary' : 'fw-bold';
 
       const previewButton = document.createElement('button');
       previewButton.type = 'button';

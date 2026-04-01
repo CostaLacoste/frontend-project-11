@@ -53,12 +53,19 @@ export const loadRss = async (url) => {
       throw new Error('network');
     }
 
-    const responseData = await response.json();
-    if (!responseData || typeof responseData.contents !== 'string') {
-      throw new Error('invalidRss');
+    let rssContent;
+    try {
+      const responseData = await response.clone().json();
+      if (responseData && typeof responseData.contents === 'string') {
+        rssContent = responseData.contents;
+      } else {
+        throw new Error('invalidRss');
+      }
+    } catch {
+      rssContent = await response.text();
     }
 
-    return parseRss(responseData.contents);
+    return parseRss(rssContent);
   } catch (error) {
     if (error instanceof Error && (error.message === 'invalidRss' || error.message === 'network')) {
       throw error;
